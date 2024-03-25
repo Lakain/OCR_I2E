@@ -1,0 +1,5 @@
+
+.env
+/test_data
+*.xlsx
+*.csv
