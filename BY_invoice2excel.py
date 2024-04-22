@@ -2,8 +2,8 @@ import pandas as pd
 from tkinter import simpledialog, messagebox
 import json, os
 
-root_path = "Z:/excel files/00 RMH Sale report/"
-# root_path = ''
+# root_path = "Z:/excel files/00 RMH Sale report/"
+root_path = ''
 invoiceNo = simpledialog.askstring("Boyang Invoice to Excel", "Input invoice No.\t\t\t\t\t")
 
 with open(root_path+"appdata/by_address.json") as f:
@@ -48,7 +48,8 @@ BY_list = pd.read_excel(root_path+'inv_data/BY_InventoryListAll.xls', skiprows=3
 # Preprocessing
 BY_list = BY_list[['Item Name', 'Color', 'Barcode']]
 BY_list['Item'] = BY_list['Item Name'].str.replace(' ', '')
-BY_list['Item'] = BY_list['Item'].str.replace('TOPS', 'TPS')
+BY_list['Item'] = BY_list['Item'].str.replace('-', '')
+BY_list['Item'] = BY_list['Item'].str.replace('TOP', 'TP')
 
 new_list = new_list.merge(BY_list, how='left', left_on=['Item', 'Color'], right_on=['Item', 'Color'])
 
