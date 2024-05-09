@@ -5,3 +5,4 @@
 *.csv
 by_address.json
 /inv_data
+/notebooks
