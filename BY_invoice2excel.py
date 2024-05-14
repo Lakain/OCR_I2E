@@ -50,6 +50,7 @@ BY_list = BY_list[['Item Name', 'Color', 'Barcode']]
 BY_list['Item'] = BY_list['Item Name'].str.replace(' ', '')
 BY_list['Item'] = BY_list['Item'].str.replace('-', '')
 BY_list['Item'] = BY_list['Item'].str.replace('TOP', 'TP')
+BY_list['Item'] = BY_list['Item'].str.replace('TPSDM', 'TOPSDM')
 
 new_list = new_list.merge(BY_list, how='left', left_on=['Item', 'Color'], right_on=['Item', 'Color'])
 
