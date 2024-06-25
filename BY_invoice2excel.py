@@ -32,7 +32,7 @@ new_list = pd.DataFrame(columns=['Item', 'QTY', 'Color', 'Price'])
 for i in range(len(itemList)):
     for des in itemList['DESCRIPTION'][i]:
         des = des.strip()
-        if des == '#1' or des == '#2':
+        if ':' not in des:
             continue
         else:
             color, qty = des.split(':')
