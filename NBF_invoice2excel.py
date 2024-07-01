@@ -2,8 +2,8 @@ from tkinter.filedialog import askopenfilename
 import PyPDF2, re, os
 import pandas as pd
 
-# root_path = "Z:/excel files/00 RMH Sale report/"
-root_path = ''
+root_path = "Z:/excel files/00 RMH Sale report/"
+# root_path = ''
 
 # Define the columns
 columns = [
@@ -95,7 +95,7 @@ for row in df.iterrows():
 df_receiving = df[['UPC Code', 'Shipped', 'Unit Price']]
 df_receiving.columns=['Code', 'Qty on Ord', 'Cost']
 df_receiving.loc[:, 'Cost'] = df_receiving['Cost'].str.strip('$ ')
-df_receiving = df_receiving[df_receiving['Qty on Ord']!='0'].reset_index()
+df_receiving = df_receiving[df_receiving['Qty on Ord']!='0'].reset_index(drop=True)
 
 df_receiving.to_csv(f'{invoiceNo}/{invoiceNo}_receiving.txt', sep='\t', index=False)
 
