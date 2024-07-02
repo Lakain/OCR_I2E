@@ -7,6 +7,7 @@ path = askopenfilename(initialdir='.')
 df = pd.read_html(path, displayed_only=False)[0]
 
 invoiceNo = df['InvoiceCode'][0]
+df.fillna({'Color': 'NA'}, inplace=True)
 os.mkdir('./'+invoiceNo)
 
 df_receiving = df[['Barcode', 'Qty', 'Price']]
