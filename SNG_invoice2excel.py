@@ -11,7 +11,7 @@ try:
 except:
     print('Directory already exist.')
 
-df = pd.read_excel(file_path)
+df = pd.read_excel(file_path, dtype=str)
 
 # Create receiving file.
 df_receiving = df[['Barcode', 'QtyShipped', 'UnitPrice']]
