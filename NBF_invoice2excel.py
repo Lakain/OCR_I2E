@@ -77,7 +77,7 @@ df = pd.DataFrame(invoice_data, columns=columns)
 df['Item Code'] = df['Item Code'].str.slice(stop=18)
 
 # Load NBF(Chade) inventory list.
-NBF_list = pd.read_excel(root_path+'inv_data/NBF_Chade Fashions.xlsx', dtype=str)
+NBF_list = pd.read_excel(root_path+'inv_data/NBF_Chade Fashions.xlsx', dtype=str, engine='openpyxl')
 NBF_list['Item Code'] = NBF_list['No.'].str.slice(stop=18)
 
 df = df.merge(NBF_list[['Item Code', 'No.', 'UPC Code']], how='left')
